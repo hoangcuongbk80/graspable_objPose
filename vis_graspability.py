@@ -4,10 +4,10 @@ from PIL import Image
 import os
 import numpy as np
 import sys
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(ROOT_DIR)
 from utils.data_utils import get_workspace_mask, CameraInfo, create_point_cloud_from_depth_image
 
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(ROOT_DIR)
 data_path = '/media/cuong/HD-PZFU3/datasets/graspnet'
 scene_id = 'scene_0030'
 ann_id = '0000'
@@ -39,7 +39,6 @@ color[graspability_full > 0.01] = [0., 1., 0.]
 cloud = o3d.geometry.PointCloud()
 cloud.points = o3d.utility.Vector3dVector(point_cloud.astype(np.float32))
 cloud.colors = o3d.utility.Vector3dVector(color.astype(np.float32))
-#o3d.visualization.draw_geometries([cloud])
 
 vis1 = o3d.visualization.Visualizer()
 vis1.create_window()
